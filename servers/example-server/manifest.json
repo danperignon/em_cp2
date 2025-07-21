@@ -1,0 +1,23 @@
+{
+  "name": "example-server",
+  "version": "2.0.0",
+  "description": "Example MCP server demonstrating EM_CP2 patterns and best practices",
+  "server": {
+    "command": "node",
+    "args": ["dist/index.js"]
+  },
+  "userConfig": {
+    "debug_mode": {
+      "type": "boolean",
+      "description": "Enable debug logging",
+      "required": false,
+      "default": false
+    },
+    "timeout": {
+      "type": "number", 
+      "description": "Request timeout in milliseconds",
+      "required": false,
+      "default": 30000
+    }
+  }
+}

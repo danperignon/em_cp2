@@ -1,0 +1,42 @@
+{
+  "mcpServers": {
+    "everything": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everything"],
+      "env": {
+        "DEBUG": "${DEBUG:-false}"
+      }
+    },
+    "example-server": {
+      "command": "node",
+      "args": ["./servers/example-server/dist/index.js"],
+      "env": {
+        "DEBUG": "${DEBUG:-false}",
+        "LOG_LEVEL": "${LOG_LEVEL:-info}"
+      }
+    },
+    "memory": {
+      "command": "node",
+      "args": ["./servers/memory/dist/index.js"],
+      "env": {
+        "MEMORY_PERSIST_PATH": "./project-memory.json",
+        "MAX_MEMORY_ITEMS": "${MAX_MEMORY_ITEMS:-1000}"
+      }
+    },
+    "filesystem": {
+      "command": "node", 
+      "args": ["./servers/filesystem/dist/index.js", "${PROJECT_ROOT:-.}"],
+      "env": {
+        "ALLOWED_EXTENSIONS": ".ts,.js,.json,.md,.txt",
+        "MAX_FILE_SIZE": "${MAX_FILE_SIZE:-10485760}"
+      }
+    },
+    "git": {
+      "command": "/Users/danielrowe/.local/bin/uvx",
+      "args": ["mcp-server-git"],
+      "env": {
+        "DEBUG": "${DEBUG:-false}"
+      }
+    }
+  }
+}

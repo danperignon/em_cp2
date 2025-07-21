@@ -1,0 +1,8 @@
+{
+  "example-server": {
+    "command": "node",
+    "args": ["./node_modules/@em-cp2/example-server/dist/index.js"],
+    "env": {},
+    "disabled": false
+  }
+}

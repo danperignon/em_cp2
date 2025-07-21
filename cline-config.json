@@ -1,0 +1,8 @@
+{
+  "everything": {
+    "command": "npx",
+    "args": ["-y", "@modelcontextprotocol/server-everything"],
+    "env": {},
+    "disabled": false
+  }
+}

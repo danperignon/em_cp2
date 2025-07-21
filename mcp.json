@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "everything-local": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everything"],
+      "env": {
+        "DEBUG": "true"
+      }
+    },
+    "example-server-local": {
+      "command": "node",
+      "args": ["./servers/example-server/dist/index.js"],
+      "env": {
+        "DEBUG": "true",
+        "LOG_LEVEL": "debug",
+        "LOCAL_MODE": "true"
+      }
+    },
+    "git-local": {
+      "command": "/Users/danielrowe/.local/bin/uvx",
+      "args": ["mcp-server-git"],
+      "env": {
+        "DEBUG": "true"
+      }
+    }
+  }
+}
