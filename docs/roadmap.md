@@ -1,12 +1,15 @@
 # EM_CP2 Development Roadmap - Living Document
 
-**Last Updated**: 2025-07-21  
+**Last Updated**: 2025-07-23  
 **Status**: Active Development  
+**Repository**: https://github.com/danperignon/em_cp2  
 **Approach**: Continuous improvement with structured evaluation
 
 ## Overview
 
 This living document tracks the ongoing development and evolution of the EM_CP2 MCP framework. It complements the concise project context in `CLAUDE.md` with detailed progress tracking, future planning, and decision history.
+
+**Repository Status**: ✅ All progress committed and backed up to GitHub
 
 ## Current State
 

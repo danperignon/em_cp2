@@ -88,6 +88,11 @@ node ./servers/example-server/dist/index.js
 
 **Technical Decisions**: TypeScript, pnpm/Turborepo, uvx for Python packages, npx for Node packages, HTTP transport for remote servers, environment variables for secrets
 
+## Repository & Backup Status
+- **GitHub Repository**: https://github.com/danperignon/em_cp2
+- **Backup Status**: ✅ All progress committed and pushed to GitHub
+- **Last Backup**: 2025-07-23 (Memory & GitHub server integration)
+
 ## Key Files
 - `CLAUDE.md` - This file (project context)
 - `docs/roadmap.md` - Detailed living roadmap document
