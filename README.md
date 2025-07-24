@@ -3,7 +3,7 @@
 A modern, efficient monorepo implementation of the Model Context Protocol (MCP) framework, designed for cross-client compatibility between Claude Desktop, Claude Code, and Cline.
 
 **🌟 Repository**: https://github.com/danperignon/em_cp2  
-**📊 Status**: 6 active MCP servers configured and documented  
+**📊 Status**: 7 active MCP servers configured and documented  
 **💾 Backup**: ✅ All progress committed and pushed to GitHub
 
 ## 🚀 Key Improvements over v1

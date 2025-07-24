@@ -63,12 +63,13 @@ node ./servers/example-server/dist/index.js
 - ✅ Time (uvx mcp-server-time v1.12.0) - timezone conversions, current time
 - ✅ Memory (npx @modelcontextprotocol/server-memory) - knowledge graph persistent memory
 - ✅ GitHub (HTTP remote server) - repository management, issues, PRs, workflows
+- ✅ Filesystem (@modelcontextprotocol/server-filesystem v2025.7.1) - secure file operations
 
 **Current Configurations**:
 - `.mcp.json` (project): everything, example-server, memory, filesystem, git, time, github
-- `mcp.json` (local): everything-local, example-server-local, git-local, time-local, memory-local, github-local
+- `mcp.json` (local): everything-local, example-server-local, git-local, time-local, memory-local, github-local, filesystem-local
 
-**Next Phase**: Filesystem server integration, custom server evaluation per roadmap
+**Next Phase**: Custom server evaluation per roadmap (filesystem integration complete)
 
 ## Setup Timeline (Condensed)
 
@@ -86,12 +87,15 @@ node ./servers/example-server/dist/index.js
 ✅ **Memory server**: npx @modelcontextprotocol/server-memory (knowledge graph, KEEP decision)
 ✅ **GitHub server**: HTTP remote server (repository management, replaces archived GitHub server)
 
+### 2025-07-24 - Filesystem Server Integration
+✅ **Filesystem server**: @modelcontextprotocol/server-filesystem v2025.7.1 (secure file operations, KEEP decision)
+
 **Technical Decisions**: TypeScript, pnpm/Turborepo, uvx for Python packages, npx for Node packages, HTTP transport for remote servers, environment variables for secrets
 
 ## Repository & Backup Status
 - **GitHub Repository**: https://github.com/danperignon/em_cp2
 - **Backup Status**: ✅ All progress committed and pushed to GitHub
-- **Last Backup**: 2025-07-23 (Memory & GitHub server integration)
+- **Last Backup**: 2025-07-24 (Filesystem server integration)
 
 ## Key Files
 - `CLAUDE.md` - This file (project context)
