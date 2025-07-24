@@ -226,6 +226,13 @@ Use official MCP SDKs:
       "headers": {
         "Authorization": "Bearer ${API_KEY}"
       }
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_TOKEN}"
+      }
     }
   }
 }

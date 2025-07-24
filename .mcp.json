@@ -16,11 +16,11 @@
       }
     },
     "memory": {
-      "command": "node",
-      "args": ["./servers/memory/dist/index.js"],
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
       "env": {
-        "MEMORY_PERSIST_PATH": "./project-memory.json",
-        "MAX_MEMORY_ITEMS": "${MAX_MEMORY_ITEMS:-1000}"
+        "MEMORY_FILE_PATH": "./project-memory.json",
+        "DEBUG": "${DEBUG:-false}"
       }
     },
     "filesystem": {
@@ -36,6 +36,20 @@
       "args": ["mcp-server-git"],
       "env": {
         "DEBUG": "${DEBUG:-false}"
+      }
+    },
+    "time": {
+      "command": "/Users/danielrowe/.local/bin/uvx",
+      "args": ["mcp-server-time"],
+      "env": {
+        "DEBUG": "${DEBUG:-false}"
+      }
+    },
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_TOKEN}"
       }
     }
   }

@@ -10,10 +10,11 @@
 - **Configuration**: Local/Project/User scoping
 - **DXT support**: Desktop Extensions manifest generation
 
-### ✅ **Testing Environment**
-- **Official server**: `@modelcontextprotocol/server-everything` v2025.7.1
+### ✅ **Active MCP Servers**
+- **Everything**: `@modelcontextprotocol/server-everything` v2025.7.1 (reference/testing)
+- **Git**: `uvx mcp-server-git` (13 repository tools)
+- **Time**: `uvx mcp-server-time` v1.12.0 (timezone conversions)
 - **MCP Inspector**: v0.16.1 with security fixes
-- **Cross-client configs**: Claude Desktop + Cline ready
 
 ## 📁 **Key Files & Locations**
 
@@ -26,9 +27,9 @@ em_cp2/
 ├── claude-desktop-config.json    # Claude Desktop specific
 ├── cline-config.json            # Cline specific
 ├── docs/
+│   ├── roadmap.md               # Detailed living roadmap document
 │   ├── mcp-best-practices.md    # Anthropic official guidelines
 │   ├── configuration-examples.md # All scoping examples
-│   ├── everything-server-setup.md # Testing server docs
 │   └── quick-reference.md       # This file
 ├── packages/
 │   ├── core/                    # MCPServer base class
@@ -53,11 +54,13 @@ pnpm clean                       # Clean build artifacts
 ```bash
 # Visual debugging with Inspector
 npx @modelcontextprotocol/inspector npx -y @modelcontextprotocol/server-everything stdio
-npx @modelcontextprotocol/inspector node ./servers/example-server/dist/index.js
+npx @modelcontextprotocol/inspector /Users/danielrowe/.local/bin/uvx mcp-server-git
+npx @modelcontextprotocol/inspector /Users/danielrowe/.local/bin/uvx mcp-server-time
 
 # Direct server testing
 npx -y @modelcontextprotocol/server-everything stdio
-node ./servers/example-server/dist/index.js
+/Users/danielrowe/.local/bin/uvx mcp-server-git
+/Users/danielrowe/.local/bin/uvx mcp-server-time
 ```
 
 ## 🎯 **Official MCP Patterns**
@@ -213,10 +216,10 @@ npx @modelcontextprotocol/inspector <server-command>
 
 ## 📚 **Documentation Hierarchy**
 
-1. **CLAUDE.md** - Project context and memory
-2. **mcp-best-practices.md** - Anthropic official guidelines
-3. **configuration-examples.md** - All scoping patterns
-4. **everything-server-setup.md** - Testing server guide
+1. **CLAUDE.md** - Project context and memory (optimized)
+2. **roadmap.md** - Detailed living roadmap and development tracking
+3. **mcp-best-practices.md** - Anthropic official guidelines
+4. **configuration-examples.md** - All scoping patterns
 5. **quick-reference.md** - This summary (you are here)
 
 ## 🎉 **What's Next?**
@@ -233,4 +236,4 @@ The framework is **100% aligned** with Anthropic's 2025 MCP standards and ready 
 
 ---
 
-*Updated: 2025-07-18 | EM_CP2 v2.0.0*
+*Updated: 2025-07-21 | EM_CP2 v2.0.0 | Active Migration: Git + Time servers complete*

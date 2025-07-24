@@ -22,6 +22,28 @@
       "env": {
         "DEBUG": "true"
       }
+    },
+    "time-local": {
+      "command": "/Users/danielrowe/.local/bin/uvx",
+      "args": ["mcp-server-time"],
+      "env": {
+        "DEBUG": "true"
+      }
+    },
+    "memory-local": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_FILE_PATH": "./local-memory.json",
+        "DEBUG": "true"
+      }
+    },
+    "github-local": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer ${GITHUB_TOKEN}"
+      }
     }
   }
 }
