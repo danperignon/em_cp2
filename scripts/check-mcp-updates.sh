@@ -6,32 +6,52 @@
 echo "🔍 Checking MCP Server Updates - $(date)"
 echo "========================================="
 
-cd /Users/danielrowe/Desktop/em_cp2
+# Get current directory (works from any location)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-echo "📦 Current official MCP server versions:"
+echo "📍 Project directory: $PROJECT_DIR"
+echo ""
+
+echo "📦 Current active MCP server versions:"
 echo "----------------------------------------"
 
-# Check current versions in configs
-echo "Memory server:"
+# Check versions of currently configured servers
+echo "Everything server (reference/testing):"
+npm view @modelcontextprotocol/server-everything version
+
+echo "Memory server (knowledge graph):"
 npm view @modelcontextprotocol/server-memory version
-echo "GitHub server:" 
-npm view @modelcontextprotocol/server-github version
-echo "Filesystem server:"
+
+echo "Filesystem server (file operations):"
 npm view @modelcontextprotocol/server-filesystem version
-echo "Puppeteer server:"
-npm view @modelcontextprotocol/server-puppeteer version
+
+echo "Git server (repository operations):"
+echo "  Using uvx mcp-server-git (latest via uvx)"
+
+echo "Time server (timezone conversions):"
+echo "  Using uvx mcp-server-time (latest via uvx)"
+
+echo "GitHub server (remote HTTP):"
+echo "  Using GitHub Copilot MCP API (remote service)"
 
 echo ""
-echo "🎯 Next steps to perform:"
-echo "1. Compare versions above with your current configs"
-echo "2. Update Claude Desktop config: ~/Library/Application Support/Claude/claude_desktop_config.json"
-echo "3. Update Cline config: ~/Library/Application Support/VSCodium/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json"
-echo "4. Test servers with MCP Inspector: npx @modelcontextprotocol/inspector <server-command>"
-echo "5. Check MCP SDK updates: npm view @modelcontextprotocol/sdk version"
+echo "🎯 Update procedure for EM_CP2:"
+echo "1. Review versions above against your current configurations"
+echo "2. Update .mcp.json (project scope) and mcp.json (local scope) as needed"
+echo "3. For uvx servers, they auto-update to latest on each run"
+echo "4. Test with MCP Inspector: npx @modelcontextprotocol/inspector <server-command>"
+echo "5. Verify cross-client compatibility (Claude Desktop, Claude Code, Cline)"
 
 echo ""
-echo "📋 Custom servers to rebuild if needed:"
-echo "- browsertools, time, web-search, web-research, markdownify, excel, obsidian, sequentialthinking-tools"
+echo "📋 Current server architecture:"
+echo "- Everything: @modelcontextprotocol/server-everything (npm)"
+echo "- Memory: @modelcontextprotocol/server-memory (npm)" 
+echo "- Filesystem: @modelcontextprotocol/server-filesystem (npm)"
+echo "- Git: mcp-server-git (uvx - auto-latest)"
+echo "- Time: mcp-server-time (uvx - auto-latest)"
+echo "- GitHub: Remote HTTP server (api.githubcopilot.com)"
+echo "- Example: Custom EM_CP2 server (local development)"
 
 echo ""
-echo "✅ Update check complete. Set next reminder for $(date -v+1m +'%B %Y')"
+echo "✅ Update check complete. Next check recommended: $(date -d '+1 month' +'%B %Y' 2>/dev/null || date -v+1m +'%B %Y' 2>/dev/null || echo 'next month')"

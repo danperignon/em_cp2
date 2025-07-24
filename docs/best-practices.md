@@ -22,11 +22,13 @@
 ### 1. **Monorepo Structure**
 ```
 em_cp2/
-├── apps/        # Client configurations only
 ├── servers/     # Independent MCP servers
+│   └── example-server/  # Custom server with client configs
 ├── packages/    # Shared code
 ├── docs/        # Centralized documentation
-└── scripts/     # Automation scripts
+├── scripts/     # Automation scripts
+├── .mcp.json    # Project scope configurations
+└── mcp.json     # Local scope configurations
 ```
 
 ### 2. **Version Control**

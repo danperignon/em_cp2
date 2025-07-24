@@ -19,19 +19,20 @@ A modern, efficient monorepo implementation of the Model Context Protocol (MCP) 
 
 ```
 em_cp2/
-├── apps/                    # Client-specific configurations
-│   ├── claude-desktop/      # Claude Desktop specific setup
-│   └── cline/              # VSCode Cline specific setup
 ├── servers/                 # MCP server implementations
-│   ├── memory/             # Knowledge graph server
-│   ├── filesystem/         # File operations server
-│   └── ...                 # Other servers
+│   └── example-server/     # Custom server with client configs
+│       ├── claude-desktop.json  # Claude Desktop config
+│       └── cline.json          # Cline config
 ├── packages/               # Shared code
 │   ├── core/              # Core MCP framework
 │   ├── shared/            # Shared utilities
 │   └── types/             # TypeScript type definitions
 ├── docs/                   # Centralized documentation
-└── scripts/                # Build and maintenance scripts
+├── scripts/                # Build and maintenance scripts
+├── .mcp.json              # Project scope MCP configurations
+├── mcp.json               # Local scope MCP configurations
+├── claude-desktop-config.json  # Root template
+└── cline-config.json           # Root template
 ```
 
 ## 🛠️ Technology Stack
@@ -160,10 +161,11 @@ See `CLAUDE.md` for detailed rebuild plan and maintenance procedures.
 
 ## 📚 Documentation
 
-- **[Architecture Guide](./docs/architecture.md)** - System design and patterns
-- **[Server Development](./docs/server-development.md)** - Creating new servers
-- **[API Reference](./docs/api-reference.md)** - Core API documentation
-- **[Migration Guide](./docs/migration-from-v1.md)** - Upgrading from EM_CP v1
+- **[Quick Reference](./docs/quick-reference.md)** - Essential commands and patterns
+- **[Roadmap](./docs/roadmap.md)** - Detailed development tracking
+- **[MCP Best Practices](./docs/mcp-best-practices.md)** - Anthropic official guidelines
+- **[Configuration Examples](./docs/configuration-examples.md)** - Setup patterns
+- **[Project Memory](./CLAUDE.md)** - Current project context
 
 ## 🤝 Contributing
 

@@ -15,14 +15,20 @@ EM_CP2 is a modernized monorepo implementation of the Extensible Model Context P
 ## Directory Structure
 ```
 em_cp2/
-├── apps/           # Client-specific configurations only
 ├── servers/        # MCP server implementations
+│   └── example-server/  # Custom server with client configs
+│       ├── claude-desktop.json  # Claude Desktop config
+│       └── cline.json          # Cline config
 ├── packages/       # Shared TypeScript packages
 │   ├── core/      # Base MCP framework (@em-cp2/core)
 │   ├── shared/    # Common utilities (@em-cp2/shared)
 │   └── types/     # TypeScript definitions (@em-cp2/types)
 ├── docs/          # Centralized documentation
-└── scripts/       # Build and automation scripts
+├── scripts/       # Build and automation scripts
+├── .mcp.json      # Project scope MCP configurations
+├── mcp.json       # Local scope MCP configurations
+├── claude-desktop-config.json  # Root template
+└── cline-config.json           # Root template
 ```
 
 ## Key Commands
