@@ -15,6 +15,14 @@
         "LOG_LEVEL": "${LOG_LEVEL:-info}"
       }
     },
+    "sequential-thinking": {
+      "command": "node",
+      "args": ["./servers/sequential-thinking-simplified/dist/index.js"],
+      "env": {
+        "DEBUG": "${DEBUG:-false}",
+        "LOG_LEVEL": "${LOG_LEVEL:-info}"
+      }
+    },
     "memory": {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"],

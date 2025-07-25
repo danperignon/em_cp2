@@ -14,6 +14,7 @@ A modern, efficient monorepo implementation of the Model Context Protocol (MCP) 
 - **Single source of truth** for documentation
 - **Type-safe** shared packages
 - **Modern tooling** with automated formatting and linting
+- **Anti-bloat principles** to keep servers focused and maintainable
 
 ## 📁 Project Structure
 
@@ -170,6 +171,11 @@ See `CLAUDE.md` for detailed rebuild plan and maintenance procedures.
 ## 🤝 Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for development guidelines.
+
+### Important Development Principles
+- **Keep servers focused**: < 1,000 lines, single responsibility
+- **Avoid over-engineering**: No enterprise patterns for simple MCP servers
+- **Review guidelines**: See [Anti-Bloat Guidelines](./docs/anti-bloat-guidelines.md)
 
 ## 📄 License
 

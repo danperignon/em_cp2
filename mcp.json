@@ -16,6 +16,15 @@
         "LOCAL_MODE": "true"
       }
     },
+    "sequential-thinking-local": {
+      "command": "node",
+      "args": ["./servers/sequential-thinking-simplified/dist/index.js"],
+      "env": {
+        "DEBUG": "true",
+        "LOG_LEVEL": "debug",
+        "LOCAL_MODE": "true"
+      }
+    },
     "git-local": {
       "command": "/Users/danielrowe/.local/bin/uvx",
       "args": ["mcp-server-git"],

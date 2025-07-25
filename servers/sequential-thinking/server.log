@@ -1,5 +1,0 @@
-[sequential-thinking] INFO: Server interface configured: 3 resources, 3 prompts, 1 tools
-[sequential-thinking] INFO: MCP handlers configured successfully
-[sequential-thinking] INFO: All handlers configured - server ready for problem decomposition
-[sequential-thinking] INFO: Sequential Thinking server initialized with core engine
-sequential-thinking server v2.0.0 started

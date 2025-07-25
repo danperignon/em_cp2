@@ -165,7 +165,7 @@ When resuming development in another session, continue with **Phase 3.4.2: Confl
 ## File Structure Summary
 
 ```
-servers/sequential-thinking/
+servers/sequential-thinking-simplified/
 ├── src/
 │   ├── engine/
 │   │   ├── multi-client-manager.ts     # ✅ Phase 3.4.1 Complete

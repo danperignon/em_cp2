@@ -315,6 +315,21 @@ Test against official implementations:
 4. **Validate schemas**: Ensure JSON schema compliance
 5. **Cross-client testing**: Verify both Claude Desktop and Cline compatibility
 
+## 🎯 EM_CP2 Specific: Anti-Bloat Principles
+
+### Keep Servers Focused
+- **Target size**: < 1,000 lines per server
+- **Maximum tools**: 5 per server (ideally 1-3)
+- **Single responsibility**: If description needs multiple "and"s, split it
+
+### Avoid Over-Engineering
+- No multi-client management (MCP is typically single-client)
+- No complex locking or distributed patterns
+- No premature abstractions or plugin systems
+- Build for current needs, not imagined futures
+
+**See**: `docs/anti-bloat-guidelines.md` for detailed guidelines and the Sequential Thinking case study
+
 ## 🔄 Updates & Versioning
 
 This document reflects Anthropic's official guidance as of 2025. Check the official documentation for the latest updates:
@@ -324,5 +339,5 @@ This document reflects Anthropic's official guidance as of 2025. Check the offic
 
 ---
 
-*Last Updated: 2025-07-18*  
+*Last Updated: 2025-07-25*  
 *Source: Anthropic Official Documentation + EM_CP2 Implementation Experience*
