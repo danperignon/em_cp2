@@ -1,119 +1,82 @@
 # EM_CP2 Project Memory
 
-## Project Overview
-EM_CP2 is a modernized monorepo implementation of the Extensible Model Context Protocol (MCP) framework. Complete rewrite from em_cp (v1) addressing bloat and improving maintainability.
+## Quick Context
+EM_CP2 is a clean monorepo implementation of MCP (Model Context Protocol) servers. Built from scratch to replace bloated em_cp v1, focusing on maintainability and single-purpose servers.
 
-**Architecture**: pnpm workspaces + Turborepo + TypeScript strict mode + cross-client compatibility (Claude Desktop, Claude Code, Cline)
+**Current State**: 7 active MCP servers | ~850 lines avg per server | 87% smaller than v1
 
-## Core Standards
-- **Code**: 2-space indent, ESLint/Prettier, conventional commits, kebab-case files
-- **MCP Patterns**: stdio/SSE/HTTP transport, Local→Project→User scoping, environment variables for secrets
-- **Security**: OAuth 2.0, read-only default, input validation, timeout/retry logic
+## Core Principles
+1. **Single Responsibility**: Each server does ONE thing well (<1,000 lines)
+2. **No Over-Engineering**: No enterprise patterns in MCP context
+3. **Composition Over Complexity**: Use existing servers, don't rebuild
+4. **Anti-Bloat**: See `docs/anti-bloat-guidelines.md` (Sequential Thinking case study)
 
-**See**: `docs/mcp-best-practices.md` for complete guidelines
+## Architecture
+- **Stack**: pnpm workspaces + Turborepo + TypeScript strict mode
+- **Clients**: Claude Desktop, Claude Code, Cline (cross-compatible)
+- **Patterns**: stdio/SSE/HTTP transport, environment variables for secrets
 
 ## Directory Structure
 ```
 em_cp2/
-├── servers/        # MCP server implementations
-│   └── example-server/  # Custom server with client configs
-│       ├── claude-desktop.json  # Claude Desktop config
-│       └── cline.json          # Cline config
-├── packages/       # Shared TypeScript packages
-│   ├── core/      # Base MCP framework (@em-cp2/core)
-│   ├── shared/    # Common utilities (@em-cp2/shared)
-│   └── types/     # TypeScript definitions (@em-cp2/types)
-├── docs/          # Centralized documentation
-├── scripts/       # Build and automation scripts
-├── .mcp.json      # Project scope MCP configurations
-├── mcp.json       # Local scope MCP configurations
-├── claude-desktop-config.json  # Root template
-└── cline-config.json           # Root template
+├── servers/                    # MCP server implementations
+│   ├── example-server/        # Template server with client configs
+│   └── sequential-thinking-simplified/  # Problem decomposition (821 lines)
+├── packages/                   # Shared TypeScript packages
+│   ├── core/                  # Base MCP framework (@em-cp2/core)
+│   ├── shared/                # Common utilities (@em-cp2/shared)
+│   └── types/                 # TypeScript definitions (@em-cp2/types)
+├── docs/                      # Documentation
+│   ├── anti-bloat-guidelines.md  # IMPORTANT: Read before developing
+│   ├── mcp-best-practices.md    # Anthropic official guidelines
+│   └── roadmap.md               # Detailed project history
+├── scripts/                   # Build and automation
+├── .mcp.json                  # Project scope MCP configurations
+├── mcp.json                   # Local scope MCP configurations
+└── CLAUDE.md                  # This file (project context)
 ```
+
+## Active Servers
+| Server | Purpose | Tools | Command |
+|--------|---------|-------|---------|
+| Git | Repository operations | 13 | `uvx mcp-server-git` |
+| Time | Timezone conversions | 2 | `uvx mcp-server-time` |
+| Memory | Knowledge graph storage | 5 | `npx @modelcontextprotocol/server-memory` |
+| GitHub | Issues, PRs, workflows | HTTP | `https://api.githubcopilot.com/mcp/` |
+| Filesystem | Secure file operations | 6 | `npx @modelcontextprotocol/server-filesystem` |
+| Example | Framework demo | 3 | `node ./servers/example-server/dist/index.js` |
+| Sequential Thinking | Problem decomposition | 1 | `node ./servers/sequential-thinking-simplified/dist/index.js` |
 
 ## Key Commands
 ```bash
-# Development
-pnpm install/build/dev/test/lint/clean
-
-# MCP testing
-npx @modelcontextprotocol/inspector <server-command>
-npx -y @modelcontextprotocol/server-everything stdio
-node ./servers/example-server/dist/index.js
+pnpm install          # Install dependencies
+pnpm build           # Build all packages
+npx @modelcontextprotocol/inspector <cmd>  # Test any MCP server
 ```
 
-## MCP Server Development
-- Each server is in `servers/<name>/` with its own package.json
-- Extend `MCPServer` from `@em-cp2/core`
-- Include both `claude-desktop.json` and `cline.json` configs
-- Use workspace dependencies: `"@em-cp2/core": "workspace:*"`
-- Build outputs go to `dist/` directory
+## Adding a New Server
+1. **Check need**: Can existing servers handle it? (compose, don't complicate)
+2. **Keep focused**: <1,000 lines, 1-5 tools max
+3. **Use template**: Copy `example-server`, modify as needed
+4. **Test thoroughly**: Use MCP Inspector before integration
+5. **Document clearly**: Single sentence purpose in README
 
-## MCP Client Configurations
+## Important Lessons
+- **Sequential Thinking**: Reduced from 13,441 to 821 lines (94% reduction)
+- **Why**: Avoided enterprise patterns, kept single focus
+- **Result**: Same functionality, 94% less complexity
 
-**Claude Desktop**: `~/Library/Application Support/Claude/claude_desktop_config.json` (JSON edit)
-**Claude Code**: `.mcp.json` (local/project) or `claude mcp add <name> <command>` (CLI)  
-**Cline/VSCode**: VSCode/VSCodium settings or `cline_mcp_settings.json`
+## Project Health
+- **Total Size**: ~123MB (vs 947MB in v1)
+- **Build Time**: <1s with cache (vs 30s in v1)
+- **Maintainability**: High (small, focused servers)
+- **Documentation**: Comprehensive (see docs/)
 
-**Key Difference**: Claude Code has built-in tools + dynamic server management; others spawn servers on startup
+## Key Resources
+- **Repository**: https://github.com/danperignon/em_cp2
+- **Roadmap**: `docs/roadmap.md` (detailed timeline & decisions)
+- **Guidelines**: `docs/mcp-best-practices.md` + `docs/anti-bloat-guidelines.md`
+- **Configs**: `.mcp.json` (project) / `mcp.json` (local)
 
-## Performance & Dependencies
-- **Size**: 947MB → 123MB (87% reduction, zero duplication)
-- **Build**: Turborepo caching (0.2s vs 30s), shared dependencies
-- **Git**: Never commit build artifacts, use strict .gitignore
-
-## Active MCP Migration Status
-
-**Completed Servers**: 
-- ✅ Git (uvx mcp-server-git) - 13 tools, repository operations
-- ✅ Time (uvx mcp-server-time v1.12.0) - timezone conversions, current time
-- ✅ Memory (npx @modelcontextprotocol/server-memory) - knowledge graph persistent memory
-- ✅ GitHub (HTTP remote server) - repository management, issues, PRs, workflows
-- ✅ Filesystem (@modelcontextprotocol/server-filesystem v2025.7.1) - secure file operations
-
-**Current Configurations**:
-- `.mcp.json` (project): everything, example-server, memory, filesystem, git, time, github
-- `mcp.json` (local): everything-local, example-server-local, git-local, time-local, memory-local, github-local, filesystem-local
-
-**Next Phase**: Custom server evaluation per roadmap (filesystem integration complete)
-
-## Setup Timeline (Condensed)
-
-### 2025-07-18 - Initial Framework
-✅ Monorepo setup (pnpm + Turborepo), TypeScript strict mode, MCP patterns, everything server, MCP Inspector v0.16.1
-
-### 2025-07-20 - Migration Planning  
-✅ Server analysis, outdated versions identified, serial implementation strategy
-
-### 2025-07-21 - Active Migration
-✅ **Git server**: uvx mcp-server-git (13 tools, KEEP decision)
-✅ **Time server**: uvx mcp-server-time v1.12.0 (timezone tools, KEEP decision)
-
-### 2025-07-23 - Memory & GitHub Server Integration
-✅ **Memory server**: npx @modelcontextprotocol/server-memory (knowledge graph, KEEP decision)
-✅ **GitHub server**: HTTP remote server (repository management, replaces archived GitHub server)
-
-### 2025-07-24 - Filesystem Server Integration
-✅ **Filesystem server**: @modelcontextprotocol/server-filesystem v2025.7.1 (secure file operations, KEEP decision)
-
-### 2025-07-25 - Sequential Thinking Server Simplification
-✅ **Sequential Thinking Server**: Simplified from 13,441 to 821 lines (94% reduction)
-- **Decision**: Original implementation was severely over-engineered
-- **Removed**: Multi-client management, locking, conflict resolution, event systems
-- **Kept**: Core problem decomposition with 6 cognitive strategies
-- **Result**: Focused, maintainable server that does one thing well
-- **New Structure**: 5 files totaling ~850 lines
-- **Benefits**: Better performance, maintainability, and clarity
-
-**Technical Decisions**: TypeScript, pnpm/Turborepo, uvx for Python packages, npx for Node packages, HTTP transport for remote servers, environment variables for secrets
-
-## Repository & Backup Status
-- **GitHub Repository**: https://github.com/danperignon/em_cp2
-- **Backup Status**: ✅ All progress committed and pushed to GitHub
-- **Last Backup**: 2025-07-25 (Sequential Thinking Server Simplification - 94% code reduction)
-
-## Key Files
-- `CLAUDE.md` - This file (project context)
-- `docs/roadmap.md` - Detailed living roadmap document
-- `docs/mcp-best-practices.md` - Anthropic official guidelines
-- `.mcp.json` / `mcp.json` - Server configurations
+---
+*Remember: When in doubt, leave it out. Complexity is the enemy of maintainability.*
