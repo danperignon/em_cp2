@@ -8,7 +8,7 @@ import { MCPServer } from '@em-cp2/core';
 import { Logger } from '@em-cp2/shared';
 
 class ExampleServer extends MCPServer {
-  private logger: Logger;
+  private logger?: Logger;
 
   constructor() {
     super({
@@ -164,6 +164,9 @@ class ExampleServer extends MCPServer {
     //   }
     // });
 
+    // Skip logging if logger not initialized yet (called from parent constructor)
+    if (!this.logger) return;
+    
     this.logger.info('Example server configured with official MCP patterns (see comments for implementation)');
     this.logger.info(`Server interface defined: ${this.resources?.length || 0} resources, ${this.prompts?.length || 0} prompts, ${this.tools?.length || 0} tools`);
     

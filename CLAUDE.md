@@ -3,7 +3,7 @@
 ## Quick Context
 EM_CP2 is a clean monorepo implementation of MCP (Model Context Protocol) servers. Built from scratch to replace bloated em_cp v1, focusing on maintainability and single-purpose servers.
 
-**Current State**: 7 active MCP servers | ~850 lines avg per server | 87% smaller than v1
+**Current State**: 9 active MCP servers | ~850 lines avg per server | 87% smaller than v1
 
 ## Core Principles
 1. **Single Responsibility**: Each server does ONE thing well (<1,000 lines)
@@ -26,25 +26,41 @@ em_cp2/
 │   ├── core/                  # Base MCP framework (@em-cp2/core)
 │   ├── shared/                # Common utilities (@em-cp2/shared)
 │   └── types/                 # TypeScript definitions (@em-cp2/types)
-├── docs/                      # Documentation
-│   ├── anti-bloat-guidelines.md  # IMPORTANT: Read before developing
-│   ├── mcp-best-practices.md    # Anthropic official guidelines
-│   └── roadmap.md               # Detailed project history
+├── docs/                      # Documentation (8 files)
+│   ├── anti-bloat-guidelines.md  # Core principles & 94% reduction case study
+│   ├── mcp-best-practices.md    # Anthropic official MCP guidelines
+│   ├── roadmap.md               # Living timeline & decision history
+│   ├── configuration-examples.md # Three-tier MCP scoping explained
+│   └── [4 more...]              # See docs/ for full list
 ├── scripts/                   # Build and automation
+│   └── check-mcp-updates.sh   # Check for MCP updates
+├── .claude/                   # Claude-specific files
+├── .github/                   # GitHub configuration
+│   └── workflows/             # GitHub Actions workflows
 ├── .mcp.json                  # Project scope MCP configurations
 ├── mcp.json                   # Local scope MCP configurations
+├── claude-desktop-config.json # Claude Desktop root template
+├── cline-config.json          # Cline root template  
+├── package.json               # Root package configuration
+├── pnpm-workspace.yaml        # pnpm workspace configuration
+├── turbo.json                 # Turborepo configuration
+├── tsconfig.json              # Root TypeScript config
+├── tsconfig.base.json         # Base TypeScript config
+├── README.md                  # Project overview
 └── CLAUDE.md                  # This file (project context)
 ```
 
 ## Active Servers
 | Server | Purpose | Tools | Command |
 |--------|---------|-------|---------|
+| Everything | Reference/testing server | 8 | `npx @modelcontextprotocol/server-everything` |
 | Git | Repository operations | 13 | `uvx mcp-server-git` |
 | Time | Timezone conversions | 2 | `uvx mcp-server-time` |
-| Memory | Knowledge graph storage | 5 | `npx @modelcontextprotocol/server-memory` |
-| GitHub | Issues, PRs, workflows | HTTP | `https://api.githubcopilot.com/mcp/` |
-| Filesystem | Secure file operations | 6 | `npx @modelcontextprotocol/server-filesystem` |
-| Example | Framework demo | 3 | `node ./servers/example-server/dist/index.js` |
+| Memory | Knowledge graph storage | 9 | `npx @modelcontextprotocol/server-memory` |
+| GitHub | Issues, PRs, workflows | 71+ | `https://api.githubcopilot.com/mcp/` |
+| Filesystem | Secure file operations | 13 | `npx @modelcontextprotocol/server-filesystem` |
+| Fetch | Web content retrieval | 1 | `uvx mcp-server-fetch` |
+| Example | Framework demo | 2 | `node ./servers/example-server/dist/index.js` |
 | Sequential Thinking | Problem decomposition | 1 | `node ./servers/sequential-thinking-simplified/dist/index.js` |
 
 ## Key Commands
@@ -73,10 +89,17 @@ npx @modelcontextprotocol/inspector <cmd>  # Test any MCP server
 - **Documentation**: Comprehensive (see docs/)
 
 ## Key Resources
+
+### Essential Documentation
+- **Project Roadmap**: `docs/roadmap.md` - Detailed timeline, decisions, and future plans
+- **Anti-Bloat Guidelines**: `docs/anti-bloat-guidelines.md` - Core development principles (94% reduction case study)
+- **MCP Best Practices**: `docs/mcp-best-practices.md` - Anthropic's official MCP guidelines
+- **Configuration Guide**: `docs/configuration-examples.md` - MCP's three-tier scoping system explained
+
+### Quick References
 - **Repository**: https://github.com/danperignon/em_cp2
-- **Roadmap**: `docs/roadmap.md` (detailed timeline & decisions)
-- **Guidelines**: `docs/mcp-best-practices.md` + `docs/anti-bloat-guidelines.md`
-- **Configs**: `.mcp.json` (project) / `mcp.json` (local)
+- **Config Files**: `.mcp.json` (project scope) / `mcp.json` (local scope)
+- **Operational Guide**: `docs/quick-reference.md` - Commands, status, and locations
 
 ---
 *Remember: When in doubt, leave it out. Complexity is the enemy of maintainability.*

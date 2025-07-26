@@ -60,6 +60,13 @@
       "env": {
         "DEBUG": "true"
       }
+    },
+    "fetch-local": {
+      "command": "/Users/danielrowe/.local/bin/uvx",
+      "args": ["mcp-server-fetch"],
+      "env": {
+        "DEBUG": "true"
+      }
     }
   }
 }

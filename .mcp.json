@@ -58,6 +58,13 @@
       "headers": {
         "Authorization": "Bearer ${GITHUB_TOKEN}"
       }
+    },
+    "fetch": {
+      "command": "/Users/danielrowe/.local/bin/uvx",
+      "args": ["mcp-server-fetch"],
+      "env": {
+        "DEBUG": "${DEBUG:-false}"
+      }
     }
   }
 }

@@ -21,7 +21,10 @@ A modern, efficient monorepo implementation of the Model Context Protocol (MCP) 
 ```
 em_cp2/
 ├── servers/                 # MCP server implementations
-│   └── example-server/     # Custom server with client configs
+│   ├── example-server/     # Custom server with client configs
+│   │   ├── claude-desktop.json  # Claude Desktop config
+│   │   └── cline.json          # Cline config
+│   └── sequential-thinking-simplified/  # Problem decomposition server
 │       ├── claude-desktop.json  # Claude Desktop config
 │       └── cline.json          # Cline config
 ├── packages/               # Shared code
@@ -33,7 +36,11 @@ em_cp2/
 ├── .mcp.json              # Project scope MCP configurations
 ├── mcp.json               # Local scope MCP configurations
 ├── claude-desktop-config.json  # Root template
-└── cline-config.json           # Root template
+├── cline-config.json           # Root template
+├── package.json            # Root package configuration
+├── pnpm-workspace.yaml     # pnpm workspace configuration
+├── turbo.json              # Turborepo configuration
+└── tsconfig.base.json      # Base TypeScript config
 ```
 
 ## 🛠️ Technology Stack
@@ -170,8 +177,6 @@ See `CLAUDE.md` for detailed rebuild plan and maintenance procedures.
 
 ## 🤝 Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md) for development guidelines.
-
 ### Important Development Principles
 - **Keep servers focused**: < 1,000 lines, single responsibility
 - **Avoid over-engineering**: No enterprise patterns for simple MCP servers
@@ -179,4 +184,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md) for development guidelines.
 
 ## 📄 License
 
-MIT License - see [LICENSE](./LICENSE) for details.
+MIT License
