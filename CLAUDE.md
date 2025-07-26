@@ -101,5 +101,25 @@ npx @modelcontextprotocol/inspector <cmd>  # Test any MCP server
 - **Config Files**: `.mcp.json` (project scope) / `mcp.json` (local scope)
 - **Operational Guide**: `docs/quick-reference.md` - Commands, status, and locations
 
+## Reference Documents
+
+Complete list of reference documentation for the EM_CP2 project.
+
+### Slash Commands
+- **`/read-essential-docs`** - Load 3 core documents for quick context (recommended)
+- **`/read-all-docs`** - Load all 8 documents for comprehensive context
+
+### Essential Documentation (loaded by `/read-essential-docs`)
+1. **CLAUDE.md** - Project memory, current state, and quick context (this file)
+2. **docs/anti-bloat-guidelines.md** - Core principles preventing over-engineering
+3. **docs/roadmap.md** - Living development timeline, decisions, and future plans
+
+### Task-Specific Documentation (additional docs in `/read-all-docs`)
+4. **README.md** - Project overview, getting started, and technology stack
+5. **docs/mcp-best-practices.md** - Anthropic's official MCP development guidelines
+6. **docs/best-practices.md** - EM_CP2 specific development practices
+7. **docs/quick-reference.md** - Essential commands and operational guide
+8. **docs/configuration-examples.md** - MCP three-tier scoping system explained
+
 ---
 *Remember: When in doubt, leave it out. Complexity is the enemy of maintainability.*
